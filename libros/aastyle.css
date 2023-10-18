@@ -1,0 +1,550 @@
+
+/* :root selecciona el elemento raíz del documento:
+   <html> en el caso de HTML */
+
+:root {
+
+/* Establecemos colores para aplicarlos posteriormente y poder cambiarlos con facilidad
+en el futuro en caso de querer hacerlo */
+
+  --color1: white;
+  --color2: #c9d6df;
+  --color3: #52616b;
+  --color4: #1e2022;
+  --colorfondo: #1e2022;
+  --coloruso: #f0f5f9;
+}
+
+* {
+
+  /* Con este selector seleccionamos todo el documento y establecemos margin 0 (espacio despues del borde) 
+  y padding: 0;(espacio antes del borde) para eliminar así los ajustes preestablecidos, 
+  le damos a todo el documento la fuente a usar 'Silkscreen' y
+  le quitamos la decoracion preestrablecida a todo el texto del documento(nos interesa, por ejemplo, quitar el subrayado de enlaces) */
+
+  padding: 0;
+  margin: 0;
+  /* font-family: 'Nunito', sans-serif; */
+  font-family: 'Silkscreen', cursive;
+  text-decoration: none;
+
+}
+
+img {
+
+  /* aquí para que las imagenes ocupen siempre el 100% de su ancho y a lo que de de alto establecemos que:  */
+
+  width: 100%;
+  height: auto;
+}
+body {
+
+  /* aqui le damos color al fondo de todo el cuerpo de la página, generando un degradaso que hace que esté más oscura (en este caso) cada vez que 
+  se haga scroll hacia abajo */
+
+  background: linear-gradient(var(--coloruso), var(--color3));
+}
+
+/* A continuacion hacemos diferenciación entre dos posibilidades, una pantalla con maximo 700 px de largo y otra con 700 px de minimo para hacer 
+la visualización de pantalla de ordenador y de smartphone. usando  @media only screen */
+
+@media only screen and (min-width: 700px) {
+  
+
+  header {
+
+   /* le damos forma al header de la página,
+   para ello subdividimos el espacio con display grid y establecemos que habrados columnas (una columna divisoria), el primer espacio 
+   ocupará automaticamente el espacio restante (que en este caso es el 20%) y el otro ocupará el 80% restante,
+   le daremos una altura de 10 y un margen inferior de 8 'viewport-width' que simboliza el ancho del dispositivo en el que se está visualizando. */
+
+    display: grid;
+    grid-template-rows: auto 80%;
+    height: 10vw;
+    margin-bottom: 8vw;
+  }
+
+  .titulo {
+    /* mediante el selector de clases '.' seleccionamos la clase titulo aplicada al div que contiene el <h1> con el título de la página,
+    y usando el modelo unidimensional de layout flexbox nos facilita la tarea de posicionar dicho titulo en el centro de 'titulo' usando
+         justify-content: center;
+    */
+    
+    display: flex;
+    justify-content: center;
+  }
+
+  @keyframes fondo {
+
+    /* establecemos keyframes o 'fotogramas clave' para añadir efectos a las sombras y la escala durante transiciones de hover en el titulo 
+    y poder llamar a dicha animacion tantas veces sea necesario */
+
+    0% {
+      scale: 100%;
+      text-shadow: 0 0 3px var(--color4);
+    }
+
+    70% {
+      scale: 105%;
+      text-shadow: 0 10px 30px black;
+    }
+
+    100% {
+      scale: 100%;
+      text-shadow: 0 0 3px var(--color4);
+    }
+  }
+
+  h1:hover {
+    /*la pseudoclase :hover coincide cuando el usuario interactúa con un elemento con un dispositivo señalador, en este caso cuando señala al titulo h1 sin clickar,
+    en ese momento establecemos que: en el plano z estara en la posicion 3 por delante de <3 y así quedará siempre al frente del resto de elementos a no ser que se le añada
+    un z-index >3,
+    animation llama a la animacion fondo, establece el tiempo y   */
+    z-index: 3;
+    color: var(--color4);
+    /* transition: 0.4s; */
+    animation: fondo 0.2s ease-in;
+    text-shadow: 0 1vw 10px var(--color2);
+  }
+
+  h1 {
+    /* transition se usa para darle un tiempo determinado a la animacion cuando entra al hover, al igual que si se la aplicamos al 'h1' coincidira con la salida del hover
+     y parte de establecer el color y la sombra, pasamos todas las letras a mayusculas con tamaño reducido (escogido por estética)*/
+    transition: 0.4s;
+    text-shadow: 0 1vw 10px var(--color2);
+    color: var(--color3);
+    font-size: 5vw;
+    font-variant: small-caps;
+    text-shadow: 0 4px 0 var(--color1);
+  }
+
+  h1:active {
+    /* para hacer notar que se ha pulsado sobre el boton un pequeño efecto usando la pseudoclase active */
+    scale: 95%;
+    transition: 0.1s;
+  }
+
+  #menu {
+    /* para evitar posteriores problemas, dejamos el contenedor de los enlaces en zindex 2 */
+    z-index: 2;
+  }
+
+  #menulibros {
+    /* eliminamos el boton de los enlaces para verion movil */
+    display: none;
+  }
+
+  .nav {
+    /* le damos tamaño y usamos grid para posicionarlo en el centro 
+    estableciendo posteriromente la posicion de los enlaces  */
+    width: 90%;
+    height: 100%;
+    /* margin: 30px 0 20px 20px; */
+    display: grid;
+    grid-template-columns: auto 90% auto;
+    
+  }
+
+  .nav ul {
+    grid-column: 2;
+     /* aprovechando la propiedad por defecto de flex,
+      flex-direction: row; que posiciona los elementos en linea,
+       le damos forma a los enlaces y le quitamos el punto por defecto a dichos enlaces
+       con la ultima propiedad */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+  }
+
+  .nav li {
+    /* espaciamos los enlaces */
+    padding: 1vw;
+    
+  }
+
+  .nav li a {
+   /* le damos tamaño y color */
+    color: var(--color4);
+    font-size: 1.4vw;
+  }
+
+  .nav li a:hover {
+    /* añadimos efecto cuando hover soble la fuente */
+    font-weight: bold;
+  }
+
+
+  /* a partir de aqui damos por finalizado el header y pasamos con el main de la página
+  para ello lo hacemos por duplicado bajo la premisa de los botones (vease script.js de esta carpeta)
+  y sus funcionalidades, en la clase 'tres' distribuimos las paginas de  forma que quepa mas de una
+  si la resolucion lo permite y en la clase 'uno' lo distribuimos en una sola columna y con la imagen más
+  grande cambiando el tamaño de las columnas y añadiendo un pequeño gap para que los espacios estén
+  espaciados, accediendo tambien al contenedor donde se generan las imagenes y posicionandolas
+  */
+
+  .tres {
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: minmax(auto, 3%) 80% minmax(auto, 3%);
+    grid-gap: 1em;
+  }
+
+  .uno {
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: minmax(auto, 3%) 30% auto;
+    grid-gap: 1em;
+  }
+
+  .tres .contenedorLibro {
+    margin: 2px;
+    grid-column: 2;
+  }
+
+  .tres .contenedorLibro img {
+    height: 80vh;
+    width: auto;
+  }
+
+  .uno .contenedorLibro {
+    margin: 2px;
+    grid-column: 2;
+
+  }
+
+  .uno .contenedorLibro img {
+    height: auto;
+    width: 60vw;
+  }
+
+  /* aqui tratamos los botones, en un aside posicionado en el grid de main
+  con la premisa de que los botones sigan el scroll, su estructura se genera en torno a la propiedad
+  display:sticky y su forma de funcionar, que necesita un punto fijo en la página al que adherirse
+    */
+  aside {
+    display: flex;
+    flex-direction: column;
+    grid-column: 3;
+  }
+
+  /* le damos forma y posicionamiento a todos los botones
+  y posteriormente con la pseudoclase :nth-of-type seleccionamos el resto de botones
+  y los posicionamos con respecto al anterior */
+
+  aside button {
+    margin: 1vw 0 1vw 0;
+    position: -webkit-sticky;
+    position: sticky;
+    align-items: flex-start;
+    top: 100px;
+    left: 90vw;
+    width: 5em;
+    height: 20vh;
+    /* las siguientes dos propiedades establecen limites en cuanto a tamaño */
+    min-height: 4vw;
+    max-height: 50px;
+    border-radius: 10px;
+    color: var(--color1);
+    background-color: var(--color4);
+    box-shadow: 3px 0px 6px 0px var(--color3);
+    border-style: none;
+    font-size: 1.4vw;
+    font-variant: small-caps;
+  }
+
+  button:nth-of-type(1) {
+    top: 20vh;
+  }
+
+  button:nth-of-type(2) {
+    top: 30vh;
+  }
+
+  button:nth-of-type(3) {
+    top: 40vh;
+  }
+
+  #arriba {
+    top: 50vh;
+  }
+
+  /*usamos hover prioritariamente para superponer el boton seleccionado con el resto
+   */
+  button:hover {
+    background-color: var(--color2);
+    color: var(--color4);
+    scale: 110%;
+    transition: 0.2s ease-in-out;
+    z-index: 2;
+  }
+
+  button:active {
+    scale: 80%;
+  }
+  .botonactivo {
+    /* clase para llamar desde js para definir si el boton está activo */
+
+    background-color: var(--coloruso);
+    color: var(--color4);
+  }
+
+
+}
+
+/* para smartphone, eliminamos los botones que distinguen columnas en la pantalla porque pierden sentido y metemos los enlaces
+   al resto de libros en #menulibros, (ver script.js)
+  */
+@media only screen and (max-width: 700px) {
+
+
+  header {
+
+    display: grid;
+    grid-template-columns: auto 70%;
+    height: 40vw;
+    margin-bottom: 4vw;
+    border-bottom: var(--color4) double 4px;
+  }
+
+  .titulo {
+    grid-column: 2;
+    padding-bottom: 2vw;
+    z-index: 3;
+  }
+
+  .titulocambio {
+    padding-left: 10%;
+    grid-area: 1/1/2/3;
+    transition: 0.6s ease-in;
+  }
+
+
+
+  @keyframes letras {
+    0% {
+      color: var(--color1);
+    }
+
+    100% {
+      color: var(--color4);
+    }
+  }
+
+  h1 {
+    transition: 0.2s;
+    margin-right: 4px;
+    color: var(--color4);
+    font-size: 9vw;
+    font-variant: small-caps;
+    text-shadow: 0 4px 0 var(--color1);
+  }
+
+  h1:active {
+    scale: 110%;
+    transition: 0.4s;
+  }
+/* lo que viene a continuacion es el desplegable y las consecuencias del desplegable para el boton, el titulo y el resto de la pagina */
+  .nav {
+    transition: 1s ease;
+    display: none;
+  }
+
+  @keyframes letras2 {
+    0% {
+      scale: 0;
+    }
+
+    100% {
+      scale: 1;
+    }
+  }
+
+  .nav ul {
+    animation: letras2 0.5s ease-in;
+    padding: 0 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav li {
+    list-style: none;
+    padding: 12px 0;
+  }
+
+  .nav li a {
+    animation: letras 0.5s ease-in;
+    width: 50%;
+    color: var(--color4);
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .menuabierto {
+    margin-top: 500px;
+    transition: 0.3s ease-in;
+  }
+
+  .menulibrosabierto {
+    width: 98vw;
+  }
+
+  .nav li a:hover {
+    font-weight: bold;
+  }
+
+  #menu {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+  }
+
+  #contenedor-header {
+    width: 100%;
+    height: 100%;
+    /* cursor: pointer; */
+    transition: 0.3s ease-in;
+  }
+
+  .cambio {
+    display: block;
+  }
+
+  #menulibros {
+    margin: 2vw 0 0 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color4);
+    color: var(--color1);
+    /* padding: 4vw;
+    margin-left: 3vw; */
+    border-radius: 5px;
+    width: 20vw;
+    height: 20vw;
+  }
+
+  #menulibros p {
+    font-size: 1em;
+  }
+/* le dejo duplicada la clase de main segun el boton, por asegurar que no tenga en las 
+cookies prestablecida la clase uno en vez de tres por apertura anterior en pc con la misma cuenta */
+  .tres {
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: 90% auto;
+
+
+  }
+
+  .uno {
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: 80% 10%;
+  }
+
+  .tres .contenedorLibro {
+
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tres .contenedorLibro img {
+    height: auto;
+    width: 80%;
+  }
+
+  .uno .contenedorLibro {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .uno .contenedorLibro img {
+    height: auto;
+    width: 80%;
+  }
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* background: linear-gradient(99deg, var(--color1), var(--color4) 100%); */
+    grid-column: 2;
+
+  }
+
+  aside button {
+    width: 80%;
+    height: auto;
+    border-radius: 4px;
+    background-color: var(--color4);
+    position: -webkit-sticky;
+    position: sticky;
+    align-items: flex-start;
+    /* margin-right: 10px; */
+    color: var(--color1);
+    box-shadow: 3px 0px 6px 0px var(--color3);
+    border-style: none;
+    font-size: 70%;
+    font-weight: 700;
+    font-variant: small-caps;
+  }
+
+  button:nth-of-type(1) {
+    display: none;
+  }
+
+  button:nth-of-type(2) {
+    display: none;
+  }
+
+  button:nth-of-type(3) {
+    top: 80vh;
+
+  }
+
+  #arriba {
+    top: 90vh;
+  }
+
+  button:active {
+    background-color: var(--color2);
+    color: var(--color4);
+
+    transition: 0.2s ease-in-out;
+    z-index: 2;
+    scale: 80%;
+  }
+
+  .botonactivo {
+    background-color: var(--coloruso);
+    color: var(--color4);
+  }
+
+  
+}
+
+main {
+  /* decisiones posteriores de diseño qe se comparten */
+  padding-top: 2vw;
+  border-top: solid 3px black;
+}
+
+/* para el boton texto */
+.texto {
+  display: inline;
+}
+
+.textohidden {
+  display: none;
+}

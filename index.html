@@ -1,0 +1,106 @@
+<!-- HTML son las siglas de Hyper Text Markup Language,
+    es el lenguaje marcado estándar para crear páginas web
+    establecemos un documento de este tipo en el que: 
+
+    <etiqueta atributo=“valor”> contenido </etiqueta>
+       etiquetas empleadas:
+            
+            ul =lista no ordenada
+             li = elementos de lista
+             img = imagen 
+             p = párrafo
+             a = enlace 
+             div = división
+             nav = navegación
+             aside = boque de contenido secundario
+             header = cabecera
+             a = enlaces
+            
+
+            atributos empleados:
+                
+             id = identificador
+             class = clase (por debajod de id)
+             href = enlaces html
+             src = imágenes
+             
+-->
+
+<!DOCTYPE html>
+
+<!-- su lenguaje sera español -->
+<html lang="es">
+<!-- su estructura será <head> (provee información general (metadatos) acerca del documento, incluyendo su título y enlaces a scripts y hojas de estilos) y <body>(contenido de la página web) -->
+
+<head>
+    <!--  la codificación UTF-8 (estándar en HTML5 reconocido por la RFC 3629 de la Internet Engineering Task Force (IETF) y una de las tres posibilidades de codificación reconocidas por Unicode),
+     se debe enviar la codificación del documento en las cabeceras HTTP para permitir que el navegador comience a analizar el HTML y a ejecutar scripts de forma inmediata. -->
+    <meta charset="UTF-8">
+    <!-- La vista de compatibilidad es una característica que fue incorporada en Internet Explorer 8, que permiten al navegador mostrar las páginas web que no cumplen con los estándares como si corrieran en versiones anteriores de IE. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- conseguir correctamente responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- hoja de estilo -->
+    <link rel="stylesheet" href="style.css">
+    <!-- fuente -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+    <!-- script -->
+    <script src="script.js"></script>
+<!-- título de la página -->
+    <title>Referencias de Dibujo</title>
+</head>
+<!-- onload, (al cargar), llama a la función arranque() de script.js -->
+<body onload="arranque()">
+    <header>
+        <img src="./header/header_render.gif" alt="" srcset="">
+        <a class="titulo">
+            <h1>Referencias de Dibujo</h1>
+        </a>
+
+    </header>
+    <main>
+<!-- en href y src, los './, ../, etc' del proyecto son rutas para navegar en base a la carpeta donde está posicionado el propio documento .html -->
+        <div id="portadas">
+            <a href="./libros/creativeIllustration.html">
+                <img src="./andrewLommis/creativeIlustration/(1).jpg" alt="">
+                <p>Creative Illustration</p>
+            </a>
+            <a href="./libros/facesFeatures.html">
+                <img src="./andrewLommis/facesFeatures/(1).jpg" alt="">
+                <p>Faces & Features</p>
+            </a>
+            <a href="./libros/headHands.html">
+                <img src="./andrewLommis/headHands/(1).jpg" alt="">
+                <p>Heads & Hands</p>
+            </a>
+            <a href="./libros/funPencil.html">
+                <img src="./andrewLommis/funPencil/(1).jpg" alt="">
+                <p>Fun with a Pencil</p>
+            </a>
+            <a href="./libros/successfulDrawing.html">
+                <img src="./andrewLommis/successfulDrawing/(1).jpg" alt="">
+                <p>Succesfull Drawing</p>
+            </a>
+            <a href="./libros/eyePainter.html">
+                <img src="./andrewLommis/eyePainter/(1).jpg" alt="">
+                <p>The Eye of the Painter</p>
+            </a>
+            <a href="./libros/tridimensional.html">
+                <img src="./andrewLommis/tridimensional/(1).jpg" alt="">
+                <p>Tridimensional</p>
+            </a>
+            <a href="./libros/worth.html">
+                <img src="./andrewLommis/worth/(1).jpg" alt="">
+                <p>Worth Drawing</p>
+            </a>
+        </div>
+    </main>
+
+</body>
+
+</html>
+

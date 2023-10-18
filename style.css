@@ -1,0 +1,394 @@
+
+/* :root selecciona el elemento raíz del documento:
+   <html> en el caso de HTML */
+
+:root {
+  
+/* Establecemos colores para aplicarlos posteriormente y poder cambiarlos con facilidad
+en el futuro en caso de querer hacerlo */
+  --coloruso: #f0f5f9;
+  --color1: white;
+  --color2: #c9d6df;
+  --color3: #52616b;
+  --color4: #1e2022;
+  --colorfondo: #1e2022;
+}
+
+
+* {
+  /* seleccionamos todo el documento (no quiero repetir cosas de aatyle.css que comenté antes) */
+  padding: 0;
+  margin: 0;
+  font-family: 'Silkscreen', cursive;
+  text-decoration: none;
+}
+
+@keyframes aparece {
+  /* jugamos con la opacidad para hacer una animacion */
+  0% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+body {
+  background:var(--color3);
+}
+/* para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  
+  body {
+    background: linear-gradient(180deg, var(--color3)  0%,  var(--color2) 94%);
+  }
+  header img:first-of-type {
+    /* asi conseguimos ocultar el gif de titulo para versiones moviles, que es una imagen posicionada la primera dentro del header */
+    display: none;
+  }
+  body {
+    background-color: var(--color3);
+  }
+  header{
+    padding-top: 10vw;
+    /* juego con el degradado para añadir un borde al principio de la pantalla (por arriba) y ue conecte con el degradado del body */
+    background: linear-gradient(180deg, var(--color4) 0%,  var(--color3) 100%);
+  }
+  .titulo h1 {
+    color: var(--coloruso);
+    background-color: var(--color4);
+    padding: 2vw;
+    border: solid 1px var(--color1);
+    margin: 2vw;
+    box-shadow: 0px 4px 6px 0px var(--color4); 
+    
+  }
+
+  /* posicionamos las portadas manualmente, respetando siempre que se encuentren entre la columna 2 y 4, 
+  (lo hubiese realizado nombrando el area de un grid-area pero lo desestimé por incompatibilidades),
+  tambien segun su posición (la referencia es la division central), se le da margen */
+  #portadas {
+    margin-top: 15vw;
+    row-gap: 2vw;
+    display: grid;
+    grid-template-columns: 2% 48% 48% 2%; 
+  }
+  #portadas a:nth-of-type(1) {
+    grid-area: 1/ 2/ 2/ 3;
+    margin-right: 1vw;
+  }
+  #portadas a:nth-of-type(2) {
+    grid-area: 1/ 3/ 2/ 4;
+    margin-left: 1vw;
+  }
+
+  #portadas a:nth-of-type(3) {
+    grid-area: 2/ 2/ 3/ 3;
+    margin-right: 1vw;
+  }
+
+  #portadas a:nth-of-type(4) {
+    grid-area: 2/ 3/ 3/ 4;
+    margin-left: 1vw;
+  }
+
+  #portadas a:nth-of-type(5) {
+    grid-area: 4/ 2/ 5/ 3;
+    margin-right: 1vw;
+  }
+
+  #portadas a:nth-of-type(6) {
+    grid-area: 3/ 2/ 4/ 3;
+    margin-right: 1vw;
+  }
+
+  #portadas a:nth-of-type(7) {
+    grid-area: 3/ 3/ 4/ 4;
+    margin-left: 1vw;
+  }
+
+  #portadas a:nth-of-type(8) {
+    grid-area: 4/ 3/ 5/ 4;
+    margin-left: 1vw;
+  }
+
+
+  #portadas p {
+    color: var(--color4);
+    text-align: center;
+    font-size: 1em;
+  }
+
+  #portadas p:link {
+    color: var(--color1);
+    scale: 90%;
+    transition: 0.4s ease;
+  }
+  #portadas p:visited {
+    color: var(--color2);
+    scale: 90%;
+    transition: 0.4s ease;
+  }
+
+  #portadas p:hover {
+    color: var(--color3);
+    scale: 90%;
+    transition: 0.4s ease;
+  }
+
+  #portadas p:active {
+    color: var(--color4);
+    scale: 90%;
+    transition: 0.4s ease;
+    
+  }
+  #portadas img{
+    box-shadow: 0px 4px 10px 1px var(--color4);  }
+  }
+
+/* pantalla media (dejo ver el gif de titulo en vez de #titulo y organizo las portadas en un 2x4) */
+@media only screen and (min-width: 600px) and (max-width: 1600px) {
+  .titulo {
+    display: none;
+  }
+
+  body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    max-height: 1080px;
+    border-bottom: solid var(--coloruso) 2px;
+    /* box-shadow: 0 0 25px var(--color3); */
+    margin-bottom: 2vw;
+    background-color: var(--coloruso);
+    background-repeat: no-repeat;
+    background-color: #1e2022;
+    display: flex;
+    box-shadow: 0px 0.4vw 1vw 0px var(--color4); 
+  }
+
+  header img {
+    width: 100%;
+    height: 100%;
+  }
+
+  main {
+    margin-top: 10vh;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #portadas {
+    width: 100%;
+    /* display: flex;
+    justify-items: center;
+    text-decoration: none; */
+    /* height: 80vh; */
+    display: grid;
+    grid-template-columns: repeat(4, 15vw);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  /* #portadas img{
+    width: 50px;
+    height: 50px;
+  } */
+  /* grid-area: grid-row-start/ grid-column-start/ grid-row-end/  grid-column-end; */
+  #portadas a {
+    /* margin: 2vw; */
+    height: 100%;
+    width: 100%;
+
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; */
+  }
+
+  #portadas a:hover {
+    animation: aparece 0.5s;
+  }
+
+  #portadas p {
+    color: var(--color4);
+    text-decoration: none;
+    text-align: center;
+  }
+
+  #portadas p:link {
+    color: var(--color1);
+
+  }
+
+  #portadas p:visited {
+    color: var(--color2);
+  }
+
+  #portadas p:hover {
+    color: var(--color1);
+  }
+
+  #portadas p:active {
+    color: var(--color4);
+  }
+
+
+
+  #portadas a:nth-of-type(1) {
+
+    grid-area: 1/ 1/ 2;
+  }
+
+  #portadas a:nth-of-type(2) {
+
+    grid-area: 1/ 2/ 2;
+  }
+
+  #portadas a:nth-of-type(3) {
+
+    grid-area: 1/ 3/ 2;
+  }
+
+  #portadas a:nth-of-type(4) {
+
+    grid-area: 1/ 4/ 2;
+  }
+
+  #portadas a:nth-of-type(5) {
+
+    grid-area: 2/ 1/ 3;
+  }
+
+  #portadas a:nth-of-type(6) {
+
+    grid-area: 2/ 2/ 3;
+  }
+
+  #portadas a:nth-of-type(7) {
+
+    grid-area: 2/ 3/ 3;
+  }
+
+  #portadas a:nth-of-type(8) {
+
+    grid-area: 2/ 4/ 3;
+  }
+  #portadas img{
+    box-shadow: 0px 0.4vw 1vw 0px var(--color4); 
+  }
+
+  /* #portadas p{
+    justify-self: center;
+    font-variant: small-caps
+  } */
+}
+/* pantalla ancha (dejo ver el gif de titulo en vez de #titulo y organizo las portadas en un 1x8 usando flex en vez de grid) */
+@media only screen and (min-width: 1600px) {
+  .titulo {
+    display: none;
+  }
+
+  body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header {
+    box-shadow: 0px -40vw 14vw 0px var(--color4); 
+    max-height: 1080px;
+    border-bottom: solid var(--coloruso) 2px;
+    box-shadow: 0px 0.4vw 1vw 0px var(--color4); 
+    margin-bottom: 2vw;
+    display: flex;
+  }
+
+  header img {
+    width: 100%;
+    height: 100%;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 0 20px 0 20px;
+    width: 90%;
+
+  }
+
+  #portadas {
+
+    display: flex;
+    justify-items: center;
+    text-decoration: none;
+    gap: 2vw;
+    
+  }
+
+   #portadas img{
+    box-shadow: 0px 0.4vw 1vw 0px var(--color4); 
+  } 
+  
+  #portadas a {
+    /* margin: 2vw; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #portadas a:hover {
+    scale: 110%;
+    transition: 0.4s;
+  }
+  #portadas p {
+    color: var(--color4);
+    text-decoration: none;
+    text-align: center;
+    margin-top: 1vh;
+  }
+  #portadas p:link {
+    color: var(--color1);
+  }
+
+  #portadas p:visited {
+    color: var(--color2);
+  }
+
+  #portadas p:hover {
+    color: var(--color1);
+  }
+
+  #portadas p:active {
+    color: var(--color4);
+  }
+
+}
