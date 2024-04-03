@@ -46,7 +46,6 @@ body {
     background: linear-gradient(180deg, var(--color3)  0%,  var(--color2) 94%);
   }
   header img:first-of-type {
-    /* asi conseguimos ocultar el gif de titulo para versiones moviles, que es una imagen posicionada la primera dentro del header */
     display: none;
   }
   body {
@@ -54,7 +53,6 @@ body {
   }
   header{
     padding-top: 10vw;
-    /* juego con el degradado para añadir un borde al principio de la pantalla (por arriba) y ue conecte con el degradado del body */
     background: linear-gradient(180deg, var(--color4) 0%,  var(--color3) 100%);
   }
   .titulo h1 {
@@ -160,7 +158,6 @@ body {
   header {
     max-height: 1080px;
     border-bottom: solid var(--coloruso) 2px;
-    /* box-shadow: 0 0 25px var(--color3); */
     margin-bottom: 2vw;
     background-color: var(--coloruso);
     background-repeat: no-repeat;
@@ -187,10 +184,6 @@ body {
 
   #portadas {
     width: 100%;
-    /* display: flex;
-    justify-items: center;
-    text-decoration: none; */
-    /* height: 80vh; */
     display: grid;
     grid-template-columns: repeat(4, 15vw);
     grid-template-rows: repeat(2, 1fr);

@@ -1,7 +1,4 @@
 
-// Cada script individualizado por cada libro contiene un objeto con un listado que 
-// representa las páginas que contienen exculsivamente texto
-
 let textos = {
   "headHands": {
     "texto": [
@@ -35,10 +32,6 @@ let textos = {
 },
   }
 
-// En este bucle, establecemos una variable para que recorra el número de páginas de la carpeta 
-// y cree un elemento 'img' por cada página teniendo en cuenta que
-// si la variable coincide con algun número del objeto mencionado anteriormente, la clase de dicha imagen será 'texto'
-// Para terminar busca al div identificado como 'headHands' e inserta ahí las imágenes
 
 for (let i4 = 1; i4 < 141; i4++) {
     let img4 = document.createElement("img");
