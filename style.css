@@ -1,11 +1,7 @@
 
-/* :root selecciona el elemento raíz del documento:
-   <html> en el caso de HTML */
 
 :root {
-  
-/* Establecemos colores para aplicarlos posteriormente y poder cambiarlos con facilidad
-en el futuro en caso de querer hacerlo */
+
   --coloruso: #f0f5f9;
   --color1: white;
   --color2: #c9d6df;
@@ -16,7 +12,6 @@ en el futuro en caso de querer hacerlo */
 
 
 * {
-  /* seleccionamos todo el documento (no quiero repetir cosas de aatyle.css que comenté antes) */
   padding: 0;
   margin: 0;
   font-family: 'Silkscreen', cursive;
@@ -24,7 +19,6 @@ en el futuro en caso de querer hacerlo */
 }
 
 @keyframes aparece {
-  /* jugamos con la opacidad para hacer una animacion */
   0% {
     opacity: 1;
   }
@@ -46,7 +40,6 @@ img {
 body {
   background:var(--color3);
 }
-/* para dispositivos móviles */
 @media only screen and (max-width: 600px) {
   
   body {
@@ -74,9 +67,6 @@ body {
     
   }
 
-  /* posicionamos las portadas manualmente, respetando siempre que se encuentren entre la columna 2 y 4, 
-  (lo hubiese realizado nombrando el area de un grid-area pero lo desestimé por incompatibilidades),
-  tambien segun su posición (la referencia es la division central), se le da margen */
   #portadas {
     margin-top: 15vw;
     row-gap: 2vw;
@@ -156,7 +146,6 @@ body {
     box-shadow: 0px 4px 10px 1px var(--color4);  }
   }
 
-/* pantalla media (dejo ver el gif de titulo en vez de #titulo y organizo las portadas en un 2x4) */
 @media only screen and (min-width: 600px) and (max-width: 1600px) {
   .titulo {
     display: none;
@@ -211,20 +200,9 @@ body {
     align-content: center;
   }
 
-  /* #portadas img{
-    width: 50px;
-    height: 50px;
-  } */
-  /* grid-area: grid-row-start/ grid-column-start/ grid-row-end/  grid-column-end; */
   #portadas a {
-    /* margin: 2vw; */
     height: 100%;
     width: 100%;
-
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center; */
   }
 
   #portadas a:hover {
@@ -299,12 +277,8 @@ body {
     box-shadow: 0px 0.4vw 1vw 0px var(--color4); 
   }
 
-  /* #portadas p{
-    justify-self: center;
-    font-variant: small-caps
-  } */
 }
-/* pantalla ancha (dejo ver el gif de titulo en vez de #titulo y organizo las portadas en un 1x8 usando flex en vez de grid) */
+
 @media only screen and (min-width: 1600px) {
   .titulo {
     display: none;
@@ -357,7 +331,6 @@ body {
   } 
   
   #portadas a {
-    /* margin: 2vw; */
     height: 100%;
     width: 100%;
     display: flex;
